@@ -5,7 +5,7 @@ shortname: uluer
 
 @urn:cts:greekLit:tlg0013.tlg002:2.101-2.103
 
-**<a href=[ἥτε](https://www.perseus.tufts.edu/hopper/morph?l=h%28%2Fte&la=greek&can=h%28%2Fte0):**
+**[ἥτε](https://www.perseus.tufts.edu/hopper/morph?l=h%28%2Fte&la=greek&can=h%28%2Fte0):**
 A combination of the first singular feminen personal pronoun and the
 post-positive conjunction.
 [**τε**](https://www.perseus.tufts.edu/hopper/morph?l=h%28%2Fte&la=greek&can=h%28%2Fte0)
