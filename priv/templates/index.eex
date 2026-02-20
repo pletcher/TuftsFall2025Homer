@@ -1,0 +1,35 @@
+<%= @nav %>
+
+<main class="main index-main">
+  <header class="index-header">
+    <h1><%= @site_title %></h1>
+  </header>
+
+  <div class="index-content">
+    <%= for group <- @work_groups do %>
+      <section class="work-section">
+        <h2><%= group.title %></h2>
+        <%= if Map.has_key?(group, :subtitle) do %>
+          <p class="work-subtitle"><%= group.subtitle %></p>
+        <% end %>
+        <div class="book-grid">
+          <%= for item <- group.items do %>
+            <a href="<%= item.href %>" class="book-card <%= item.css_class %>">
+              <span class="book-number"><%= item.label %></span>
+              <span class="book-status"><%= item.status %></span>
+            </a>
+          <% end %>
+        </div>
+      </section>
+    <% end %>
+  </div>
+</main>
+
+<aside class="commentary">
+  <h2>About</h2>
+  <div class="about-content">
+    <p>This interactive reading environment presents comments on select passages of Homer
+    from Tufts&rsquo; Fall 2025 class on Greek Epic, with comments by Brendan
+    Cullen, Mylie Hartford, Liam Melville, Matthew Titzler, Mitchell Shiffer, and Evren Uluer.</p>
+  </div>
+</aside>
