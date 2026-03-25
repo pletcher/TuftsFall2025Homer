@@ -23,7 +23,7 @@ defmodule TuftsFall2025Homer.MixProject do
     [
       {:kodon,
        git: "https://github.com/pletcher/kodon_ex.git",
-       ref: "4cfeb50ec0b35f2ac18819dfa38886e099ae7d0a"}
+       ref: "3d8e28f3f2d12de565e3468d87781087382a04c7"}
     ]
   end
 end

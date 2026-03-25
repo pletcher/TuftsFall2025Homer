@@ -28,8 +28,13 @@
 <aside class="commentary">
   <h2>About</h2>
   <div class="about-content">
-    <p>This interactive reading environment presents comments on select passages of Homer
-    from Tufts&rsquo; Fall 2025 class on Greek Epic, with comments by Brendan
-    Cullen, Mylie Hartford, Liam Melville, Matthew Titzler, Mitchell Shiffer, and Evren Uluer.</p>
+    <p>
+      This interactive reading environment presents comments on select passages of Homer
+      from Tufts&rsquo; Fall 2025 class on Greek Epic, with comments by Brendan
+      Cullen, Mylie Hartford, Liam Melville, Matthew Titzler, Mitchell Shiffer, and Evren Uluer.
+      <a href="<%= Application.get_env(:kodon, :url_prefix, "") %>/commenters/index.html">
+        Index by commenter
+      </a>
+    </p>
   </div>
 </aside>

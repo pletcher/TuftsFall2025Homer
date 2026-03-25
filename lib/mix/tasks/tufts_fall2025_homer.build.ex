@@ -149,7 +149,16 @@ defmodule Mix.Tasks.TuftsFall2025Homer.Build do
     nav_groups = build_nav_groups(all_works, nil)
     work_groups = build_index_groups(works_with_content)
     index_html = Renderer.render_index(nav_groups, work_groups)
+
     File.write!(Path.join(output_dir, "index.html"), index_html)
+
+    commenters_dir = Path.join(output_dir, "commenters")
+
+    File.mkdir_p!(commenters_dir)
+
+    commenter_index_html = Renderer.render_commenter_index(nav_groups)
+
+    File.write!(Path.join(commenters_dir, "index.html"), commenter_index_html)
 
     # Render each work's sections
     for {work, sections_with_content} <- works_with_content do
