@@ -7,4 +7,4 @@ config :kodon,
   templates_dir: Path.expand("../priv/templates", __DIR__),
   cross_ref_prefix: "",
   cross_ref_default_slug: "tlg0012.tlg001",
-  url_prefix: ""
+  url_prefix: "/TuftsFall2025Homer"
