@@ -156,9 +156,15 @@ defmodule Mix.Tasks.TuftsFall2025Homer.Build do
 
     File.mkdir_p!(commenters_dir)
 
-    commenter_index_html = Renderer.render_commenter_index(nav_groups)
+    commenter_index_html = Renderer.render_commenter_index(all_comments)
 
     File.write!(Path.join(commenters_dir, "index.html"), commenter_index_html)
+
+    commenter_pages = build_commenter_pages(all_comments)
+
+    for {filename, commenter_show_html} <- commenter_pages do
+      File.write!(Path.join(commenters_dir, filename), commenter_show_html)
+    end
 
     # Render each work's sections
     for {work, sections_with_content} <- works_with_content do
@@ -192,6 +198,29 @@ defmodule Mix.Tasks.TuftsFall2025Homer.Build do
     Renderer.copy_css(output_dir)
 
     :ok
+  end
+
+  defp build_commenter_pages(all_comments) do
+    authors =
+      all_comments
+      |> Enum.flat_map(fn {_key, comments} ->
+        comments
+      end)
+      |> Enum.group_by(&Map.get(&1, "shortname"))
+      |> Enum.map(fn {shortname, comments} ->
+        [x | _xs] = comments |> List.first() |> Map.get("authors")
+
+        %{label: x, shortname: shortname, href: "#{url_prefix()}/commenters/#{shortname}.html"}
+      end)
+
+    all_comments
+    |> Enum.flat_map(fn {_key, comments} -> comments end)
+    |> Enum.group_by(fn c -> c["shortname"] end)
+    |> Enum.map(fn {username, comments} ->
+      rendered_comments = Renderer.render_commenter_show(authors, comments)
+
+      {"#{username}.html", rendered_comments}
+    end)
   end
 
   defp build_nav_groups(works, current_slug) do
